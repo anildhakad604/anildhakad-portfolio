@@ -1,26 +1,164 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-paper: #faf9f6;
+  --color-paper-dim: #f2f0ea;
+  --color-ink: #14140f;
+  --color-ink-soft: #4a4a42;
+  --color-ink-faint: #666456;
+  --color-line: #dedad0;
+  --color-ghost: #8a8369;
+  --color-accent: #a8571e;
+  --color-accent-soft: #f1e3d3;
+  --color-band: #14140f;
+  --color-band-text: #f2f0ea;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--color-paper);
+  --color-paper-dim: var(--color-paper-dim);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-line: var(--color-line);
+  --color-ghost: var(--color-ghost);
+  --color-accent: var(--color-accent);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-band: var(--color-band);
+  --color-band-text: var(--color-band-text);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-mask-up: mask-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-line-draw: line-draw 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes mask-up {
+    from {
+      clip-path: inset(0 0 100% 0);
+      transform: translateY(12%);
+    }
+    to {
+      clip-path: inset(0 0 0% 0);
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes line-draw {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-paper: #121210;
+    --color-paper-dim: #1a1a17;
+    --color-ink: #f2f0ea;
+    --color-ink-soft: #c7c4b8;
+    --color-ink-faint: #8c8a7f;
+    --color-line: #2c2b26;
+    --color-ghost: #756e5d;
+    --color-accent: #e0925a;
+    --color-accent-soft: #2b2117;
+    --color-band: #0a0a08;
+    --color-band-text: #f2f0ea;
   }
 }
 
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.reveal {
+  opacity: 1;
+}
+
+html.js .reveal {
+  opacity: 0;
+}
+
+html.js .reveal.is-visible {
+  animation: var(--animate-fade-up);
+}
+
+html.js .reveal-mask {
+  clip-path: inset(0 0 100% 0);
+}
+
+html.js .reveal-mask.is-visible {
+  animation: var(--animate-mask-up);
+}
+
+html.js .reveal-line {
+  transform: scaleX(0);
+}
+
+html.js .reveal-line.is-visible {
+  animation: var(--animate-line-draw);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-mask,
+  .reveal-line {
+    opacity: 1 !important;
+    clip-path: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
 }

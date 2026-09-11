@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anil Dhakad — Portfolio
 
-## Getting Started
+Personal portfolio site for Anil Kumar Dhakad, a full-stack .NET developer. Built with Next.js (App Router), TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router, static generation)
+- **TypeScript**
+- **Tailwind CSS v4**
+- Self-hosted fonts via `next/font` (no external font requests)
+- No UI/animation libraries — scroll reveals are a small custom `IntersectionObserver` hook, kept behind a `.js` class so content stays visible without JavaScript
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/            App Router pages, layout, metadata, sitemap/robots, OG image
+  components/     Header, Footer, Reveal (scroll-in animation), ContactForm
+  components/sections/   One component per landing-page section
+  components/ui/  Small shared primitives (Container, Button, SectionHeading)
+  lib/data.ts     All real content — profile, skills, projects, experience, services
+public/
+  Anil-Dhakad-Resume.pdf   Linked from the header "Resume" button
+```
 
-## Learn More
+To update content (roles, projects, skills, contact details), edit `src/lib/data.ts` — nothing else needs to change.
 
-To learn more about Next.js, take a look at the following resources:
+## Editing project links
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`src/lib/data.ts` currently points each project's "GitHub" link at the general GitHub profile, since the underlying repositories are private client work. Replace `githubHref` / add `liveHref` per project once specific repo or deployment URLs are available.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Scripts
 
-## Deploy on Vercel
+- `npm run dev` — local dev server
+- `npm run build` — production build
+- `npm run start` — run the production build locally
+- `npm run lint` — ESLint
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploys cleanly to Vercel (zero config) or any Node host / IIS via `npm run build && npm run start`.
