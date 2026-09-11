@@ -9,7 +9,7 @@ export default function ClientWork() {
     <section id="client-work" className="border-b border-line bg-paper-dim py-24 sm:py-28">
       <Container>
         <SectionHeading
-          index="04"
+          index="03"
           eyebrow="Client Work"
           title="Live production sites, built with the team at ASharp Infotech."
           description="A wider slice of agency work — e-commerce, automotive, hospitality, education, and nonprofit — each one a real, running site rather than a demo."

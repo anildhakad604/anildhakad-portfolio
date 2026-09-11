@@ -8,7 +8,7 @@ export default function Services() {
     <section id="services" className="border-b border-line py-24 sm:py-28">
       <Container>
         <SectionHeading
-          index="06"
+          index="05"
           eyebrow="Services"
           title="What I can take off your plate."
           description="Freelance, contract, or full-time — the shape of the engagement matters less than having one person who can own a feature from database to browser."

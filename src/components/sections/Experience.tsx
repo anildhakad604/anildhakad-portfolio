@@ -7,7 +7,7 @@ export default function Experience() {
   return (
     <section id="experience" className="border-b border-line bg-paper-dim py-24 sm:py-28">
       <Container>
-        <SectionHeading index="05" eyebrow="Experience" title="Where I've worked, and what I actually did there." />
+        <SectionHeading index="04" eyebrow="Experience" title="Where I've worked, and what I actually did there." />
 
         <div className="mt-14 space-y-0 border-t border-line">
           {experience.map((job, i) => (

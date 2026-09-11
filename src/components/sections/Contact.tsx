@@ -9,7 +9,7 @@ export default function Contact() {
     <section id="contact" className="py-24 sm:py-28">
       <Container>
         <SectionHeading
-          index="07"
+          index="06"
           eyebrow="Contact"
           title="Have a project in mind, or a role to fill?"
           description="Send a message here, or reach me directly — I typically reply within a day."

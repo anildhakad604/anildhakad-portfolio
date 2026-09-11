@@ -309,7 +309,6 @@ export const services: Service[] = [
 export const navLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
   { href: "#client-work", label: "Client Work" },
   { href: "#experience", label: "Experience" },
   { href: "#services", label: "Services" },

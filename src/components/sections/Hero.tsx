@@ -30,7 +30,7 @@ export default function Hero() {
             </Reveal>
 
             <Reveal as="div" delay={360} className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Button href="#projects">View Projects</Button>
+              <Button href="#client-work">View Client Work</Button>
               <Button href="#contact" variant="secondary">
                 Get in Touch
               </Button>
