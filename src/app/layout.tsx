@@ -4,6 +4,7 @@ import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CursorLines from "@/components/CursorLines";
+import ScrollProgress from "@/components/ScrollProgress";
 import { profile, siteConfig } from "@/lib/data";
 import "./globals.css";
 
@@ -111,6 +112,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
+        <ScrollProgress />
         <CursorLines />
         <Header />
         <main id="main" className="flex-1">

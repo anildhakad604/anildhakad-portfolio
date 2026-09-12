@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Magnetic from "@/components/Magnetic";
 import { profile } from "@/lib/data";
 
 export default function ContactForm() {
@@ -65,15 +66,17 @@ export default function ContactForm() {
       </div>
 
       <div className="flex flex-wrap items-center gap-4">
-        <button
-          type="submit"
-          className="group inline-flex items-center gap-2.5 border-2 border-ink bg-ink px-6 py-3.5 text-sm font-semibold tracking-wide text-paper transition-colors hover:border-accent hover:bg-accent"
-        >
-          Send Message
-          <span aria-hidden="true" className="inline-block transition-transform duration-200 ease-out group-hover:translate-x-1">
-            →
-          </span>
-        </button>
+        <Magnetic strength={0.3}>
+          <button
+            type="submit"
+            className="group inline-flex items-center gap-2.5 border-2 border-ink bg-ink px-6 py-3.5 text-sm font-semibold tracking-wide text-paper transition-colors hover:border-accent hover:bg-accent"
+          >
+            Send Message
+            <span aria-hidden="true" className="inline-block transition-transform duration-200 ease-out group-hover:translate-x-1">
+              →
+            </span>
+          </button>
+        </Magnetic>
         {status === "sent" ? (
           <p className="text-sm text-ink-faint" role="status">
             Opening your email client — feel free to send it straight from there.

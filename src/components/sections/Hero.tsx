@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Reveal from "@/components/Reveal";
+import Magnetic from "@/components/Magnetic";
 import { profile } from "@/lib/data";
 
 export default function Hero() {
@@ -30,10 +31,14 @@ export default function Hero() {
             </Reveal>
 
             <Reveal as="div" delay={360} className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Button href="#client-work">View Client Work</Button>
-              <Button href="#contact" variant="secondary">
-                Get in Touch
-              </Button>
+              <Magnetic strength={0.3}>
+                <Button href="#client-work">View Client Work</Button>
+              </Magnetic>
+              <Magnetic strength={0.3}>
+                <Button href="#contact" variant="secondary">
+                  Get in Touch
+                </Button>
+              </Magnetic>
             </Reveal>
 
             <Reveal as="div" delay={440} className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t-2 border-line pt-6 text-sm text-ink-faint">

@@ -7,6 +7,7 @@ import Container from "@/components/ui/Container";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -22,7 +23,28 @@ export default function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => document.getElementById(link.href.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        }
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b-2 transition-colors duration-300 ${
         scrolled || open ? "border-line bg-paper/90 backdrop-blur-sm" : "border-transparent bg-transparent"
@@ -39,16 +61,26 @@ export default function Header() {
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="group relative py-1 text-sm text-ink-soft transition-colors hover:text-ink"
-            >
-              {link.label}
-              <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeId === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "true" : undefined}
+                className={`group relative py-1 text-sm transition-colors ${
+                  isActive ? "text-ink" : "text-ink-soft hover:text-ink"
+                }`}
+              >
+                {link.label}
+                <span
+                  className={`absolute inset-x-0 -bottom-0.5 h-px origin-left bg-accent transition-transform duration-300 ease-out ${
+                    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
+              </a>
+            );
+          })}
         </nav>
 
         <div className="hidden md:block">
@@ -68,7 +100,7 @@ export default function Header() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="relative z-10 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
         >
           <span
             className={`h-px w-6 bg-ink transition-transform duration-200 ${open ? "translate-y-[3.5px] rotate-45" : ""}`}
@@ -78,35 +110,48 @@ export default function Header() {
           />
         </button>
       </Container>
+    </header>
 
-      <div
-        id="mobile-menu"
-        className={`overflow-hidden border-t border-line bg-paper transition-[max-height] duration-300 ease-in-out md:hidden ${
-          open ? "max-h-96" : "max-h-0 border-t-0"
-        }`}
-      >
-        <Container className="flex flex-col gap-1 py-4">
-          {navLinks.map((link) => (
+    <div
+      id="mobile-menu"
+      className={`fixed inset-x-0 top-16 bottom-0 z-40 bg-paper transition-opacity duration-300 ease-out sm:top-20 md:hidden ${
+        open ? "opacity-100" : "pointer-events-none opacity-0"
+      }`}
+    >
+      <Container className="flex h-full flex-col justify-between py-8">
+        <nav aria-label="Mobile" className="flex flex-col">
+          {navLinks.map((link, i) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="py-2.5 text-base text-ink-soft transition-colors hover:text-ink"
+              className="border-b border-line py-4 font-display text-2xl font-semibold text-ink transition-all duration-300 ease-out"
+              style={{
+                transitionDelay: open ? `${i * 50}ms` : "0ms",
+                opacity: open ? 1 : 0,
+                transform: open ? "translateY(0)" : "translateY(10px)",
+              }}
             >
               {link.label}
             </a>
           ))}
-          <a
-            href={profile.resumeHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="mt-2 border border-ink/20 px-4 py-2.5 text-center text-sm font-medium text-ink"
-          >
-            Resume
-          </a>
-        </Container>
-      </div>
-    </header>
+        </nav>
+        <a
+          href={profile.resumeHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setOpen(false)}
+          className="border-2 border-ink px-4 py-3.5 text-center text-sm font-semibold text-ink transition-all duration-300 ease-out"
+          style={{
+            transitionDelay: open ? `${navLinks.length * 50}ms` : "0ms",
+            opacity: open ? 1 : 0,
+            transform: open ? "translateY(0)" : "translateY(10px)",
+          }}
+        >
+          Resume
+        </a>
+      </Container>
+    </div>
+    </>
   );
 }
