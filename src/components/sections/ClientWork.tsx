@@ -11,8 +11,8 @@ export default function ClientWork() {
         <SectionHeading
           index="03"
           eyebrow="Client Work"
-          title="Live production sites, built with the team at ASharp Infotech."
-          description="A wider slice of agency work — e-commerce, automotive, hospitality, education, and nonprofit — each one a real, running site rather than a demo."
+          title="Live production sites — personal builds and agency work alike."
+          description="A mix of independent projects and client work delivered with the team at ASharp Infotech — e-commerce, automotive, hospitality, education, and nonprofit — each one a real, running site rather than a demo."
         />
 
         <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">

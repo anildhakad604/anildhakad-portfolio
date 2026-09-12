@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col justify-between gap-10 sm:flex-row">
           <div className="max-w-sm">
             <a href="#top" className="font-display text-lg font-semibold tracking-tight text-band-text">
-              Anil Dhakad<span className="text-accent">.</span>
+              Anil Kumar Dhakad<span className="text-accent">.</span>
             </a>
             <p className="mt-3 text-sm leading-relaxed text-band-text/60">
               Full-stack .NET developer based in {profile.city}.

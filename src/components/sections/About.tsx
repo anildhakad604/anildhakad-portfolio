@@ -24,16 +24,19 @@ export default function About() {
           </Reveal>
 
           <Reveal as="div" delay={220}>
-            <div className="flex items-center gap-4 border-2 border-line p-4">
-              <Image
-                src={profile.photo}
-                alt={profile.name}
-                width={320}
-                height={320}
-                className="h-16 w-16 shrink-0 border border-line object-cover sm:h-20 sm:w-20"
-              />
-              <div>
-                <p className="font-display text-base font-medium text-ink">{profile.name}</p>
+            <div className="max-w-[340px] border-2 border-line bg-paper-dim">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <Image
+                  src={profile.photo}
+                  alt={profile.name}
+                  fill
+                  sizes="(min-width: 1024px) 340px, 60vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="border-t-2 border-line px-5 py-4">
+                <p className="font-display text-lg font-semibold text-ink">{profile.name}</p>
                 <p className="text-sm text-ink-faint">{profile.role}</p>
               </div>
             </div>

@@ -34,7 +34,7 @@ export default function Header() {
           className="font-display text-lg font-semibold tracking-tight text-ink"
           onClick={() => setOpen(false)}
         >
-          Anil Dhakad
+          Anil Kumar Dhakad
           <span className="text-accent">.</span>
         </a>
 

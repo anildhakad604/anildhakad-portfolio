@@ -70,71 +70,6 @@ export const skillGroups: SkillGroup[] = [
   },
 ];
 
-export type Project = {
-  slug: string;
-  name: string;
-  period: string;
-  summary: string;
-  description: string;
-  features: string[];
-  stack: string[];
-  liveHref?: string;
-  githubHref?: string;
-  linkNote?: string;
-  screenshot: string;
-  screenshotAlt: string;
-  domain: string;
-};
-
-export const projects: Project[] = [
-  {
-    slug: "vimaura-ecommerce",
-    name: "Vimaura — E-commerce Web Application",
-    period: "Personal Project",
-    summary: "Full-stack online store covering the complete shopping and order-management workflow.",
-    description:
-      "A full-stack e-commerce web application built with ASP.NET Core 9, Razor Pages, and Entity Framework Core, supporting the complete online shopping and order-management workflow — from browsing to checkout to invoicing. The front end uses JavaScript, jQuery, and Bootstrap 5 on top of server-rendered Razor views, with SQL Server handling product, order, and customer data.",
-    features: [
-      "Product listing, search, filtering, sizes, and reviews",
-      "Cart and wishlist management",
-      "Checkout, order placement, and invoice generation",
-      "PhonePe and cash-on-delivery payment integration",
-      "Coupon codes, GST, and shipping cost calculation",
-      "Session-based authentication",
-      "Global exception handling and database error logging",
-    ],
-    stack: ["C#", "ASP.NET Core 9", "Razor Pages", "Entity Framework Core", "SQL Server", "jQuery", "Bootstrap 5"],
-    liveHref: "https://vimauranatural.com/",
-    githubHref: "https://github.com/Tutorial-git-lab",
-    linkNote: "Repository available on request",
-    screenshot: "/projects/vimaura.jpg",
-    screenshotAlt: "Vimaura shop listing page showing product grid with millet-based hair care bottles",
-    domain: "vimauranatural.com",
-  },
-  {
-    slug: "sweetynx-platform",
-    name: "SweetyNX — Full-Stack E-Commerce Platform",
-    period: "Personal Project",
-    summary: "E-commerce platform with an admin dashboard for products, orders, payments, and inventory.",
-    description:
-      "A full-stack e-commerce platform for managing products, customers, orders, payments, and inventory, built with Next.js on the front end and a Node.js/Express API backed by MySQL through Prisma. Unlike Vimaura, this one is API-driven end to end, with a dedicated admin dashboard for running the store day to day.",
-    features: [
-      "JWT authentication, OTP login, and role-based admin security",
-      "Product search, filtering, and detailed product pages",
-      "Cart, guest checkout, and Razorpay payment integration",
-      "Order management and order tracking",
-      "Admin dashboard for products, orders, banners, inventory, and customers",
-    ],
-    stack: ["Next.js 15", "TypeScript", "Node.js", "Express.js", "MySQL", "Prisma", "Razorpay"],
-    liveHref: "https://sweetynx.com/",
-    githubHref: "https://github.com/Tutorial-git-lab",
-    linkNote: "Repository available on request",
-    screenshot: "/projects/sweetynx.jpg",
-    screenshotAlt: "SweetyNX homepage showing the formal collection promotional banner for girls' clothing",
-    domain: "sweetynx.com",
-  },
-];
-
 export type ClientProject = {
   name: string;
   url: string;
@@ -146,6 +81,26 @@ export type ClientProject = {
 };
 
 export const clientWork: ClientProject[] = [
+  {
+    name: "Vimaura",
+    url: "https://vimauranatural.com/",
+    domain: "vimauranatural.com",
+    category: "E-Commerce",
+    description:
+      "Full-stack e-commerce store for millet-based natural hair and skin care, built on ASP.NET Core 9, Razor Pages, and Entity Framework Core, covering browsing, cart, checkout, and invoicing.",
+    screenshot: "/projects/vimaura.jpg",
+    screenshotAlt: "Vimaura shop listing page showing product grid with millet-based hair care bottles",
+  },
+  {
+    name: "SweetyNX",
+    url: "https://sweetynx.com/",
+    domain: "sweetynx.com",
+    category: "E-Commerce",
+    description:
+      "Full-stack e-commerce platform for kids' fashion with a Next.js/Node.js front end and an admin dashboard for products, orders, and inventory.",
+    screenshot: "/projects/sweetynx.jpg",
+    screenshotAlt: "SweetyNX homepage showing the formal collection promotional banner for girls' clothing",
+  },
   {
     name: "Dr Astro Crystals",
     url: "https://theastrocrystals.com/",
