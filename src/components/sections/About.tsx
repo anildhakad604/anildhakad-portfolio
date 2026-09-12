@@ -24,20 +24,20 @@ export default function About() {
           </Reveal>
 
           <Reveal as="div" delay={220}>
-            <div className="max-w-[340px] border-2 border-line bg-paper-dim">
+            <div className="max-w-[200px] border-2 border-line bg-paper-dim">
               <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <Image
                   src={profile.photo}
                   alt={profile.name}
                   fill
-                  sizes="(min-width: 1024px) 340px, 60vw"
+                  sizes="200px"
                   className="object-cover"
                   priority
                 />
               </div>
-              <div className="border-t-2 border-line px-5 py-4">
-                <p className="font-display text-lg font-semibold text-ink">{profile.name}</p>
-                <p className="text-sm text-ink-faint">{profile.role}</p>
+              <div className="border-t-2 border-line px-4 py-3">
+                <p className="font-display text-sm font-semibold text-ink">{profile.name}</p>
+                <p className="text-xs text-ink-faint">{profile.role}</p>
               </div>
             </div>
 
